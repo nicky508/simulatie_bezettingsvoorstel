@@ -6,6 +6,8 @@ from operator import itemgetter
 
 AANTAL_UITRUKKEN = 100;
 aantalKeerOnderbezet = 0;
+aantalKeerTS6 = 0;
+aantalKeerTS4 = 0;
 
 #Array Naam, Opkomstpercentage, Bevelvoerder, #BV uitrukken, Chauffeur, #Chauf uitrukken, Manschap, #Manschap uitrukken, #Aantal keren opgekomen
 post = [
@@ -180,12 +182,16 @@ def maakBezetting(opkomst):
             sortedMas.remove(person);
     
     if(len(sortedMas) >= 4):
-        #TS 6
+        #TS6
             masIngedeeld = sortedMas[:4];
+            global aantalKeerTS6;
+            aantalKeerTS6+=1;
             
     elif(len(sortedMas) >= 2):
-        #TS 4
+        #TS4
             masIngedeeld = sortedMas[:2];
+            global aantalKeerTS4;
+            aantalKeerTS4+=1;
     else:
         #te weinig manschappen opgekomen
         return False;
@@ -227,4 +233,10 @@ for uitruk in range(AANTAL_UITRUKKEN):
     #  print(reactie);
 
 resultatenNaarCSV();
+
+print("\n");
+print("--------------------------");
+print("Aantal keer TS4: "+str(aantalKeerTS4));
+print("Aantal keer TS6: "+str(aantalKeerTS6));
+print("Aantal keer onderbezet: "+str(aantalKeerOnderbezet));
   
