@@ -105,6 +105,11 @@ def maakBezetting(opkomst, post):
     bvs = filterOpgekomenFuncties(opkomst, "bv");
     chs = filterOpgekomenFuncties(opkomst, "ch");
     mas = filterOpgekomenFuncties(opkomst, "ma");
+    
+    #Pas de volgorde random aan, om te voorkomen dat altijd de vaste precom sorting wordt toegepast. Degene met de meeste minpunten en vooraan in de lijst zal dan niet standaard als eerste gekozen worden.
+    bvs = random.sample(bvs, len(bvs));
+    chs = random.sample(chs, len(chs));
+    mas = random.sample(mas, len(mas));
       
     #printPersonen(bvs);
     #printPersonen(chs);
