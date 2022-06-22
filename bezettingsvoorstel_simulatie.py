@@ -85,14 +85,34 @@ def puntenToekennenNietIngedeeld(opkomst , bvIngedeeld, chIngedeeld, masIngedeel
                     
 def puntenCorrigerenWelIngedeeld(bvIngedeeld, chIngedeeld, masIngedeeld):
     for postVrw in post:
+        # ------
+        aantalFuncties = 1;
+        if(postVrw[2] != None):
+            aantalFuncties+=1; 
+        if(postVrw[4] != None):
+            aantalFuncties+=1; 
+        # ------
+
         if(bvIngedeeld[0] == postVrw[0]):
             postVrw[2] = 0;
+            if(postVrw[4] != None):
+                postVrw[4] = postVrw[4] - (1/aantalFuncties);
+            if(postVrw[6] != None):
+                postVrw[6] = postVrw[6] - (1/aantalFuncties);
         if(chIngedeeld[0] == postVrw[0]):
             postVrw[4] = 0;
+            if(postVrw[2] != None):
+                postVrw[2] = postVrw[2] - (1/aantalFuncties);
+            if(postVrw[6] != None):
+                postVrw[6] = postVrw[6] - (1/aantalFuncties);
             
         for ma in masIngedeeld:
             if(ma[0] == postVrw[0]):
                 postVrw[6] = 0;
+                if(postVrw[2] != None):
+                    postVrw[2] = postVrw[2] - (1/aantalFuncties);
+                if(postVrw[4] != None):
+                    postVrw[4] = postVrw[4] - (1/aantalFuncties);
 
 def puntenToekennen(opkomst , bvIngedeeld, chIngedeeld, masIngedeeld):
     puntenToekennenNietIngedeeld(opkomst , bvIngedeeld, chIngedeeld, masIngedeeld);
